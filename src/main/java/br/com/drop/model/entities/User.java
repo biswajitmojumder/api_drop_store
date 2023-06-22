@@ -31,6 +31,11 @@ public class User {
     @JsonIgnore
     private PersonalData personalData_data;
 
+    @OneToOne(mappedBy = "user",  cascade = CascadeType.ALL)
+    @JoinColumn(name = "address_id")
+    @JsonIgnore
+    private Address address;
+
     @OneToMany(mappedBy = "user_id", fetch = FetchType.LAZY)
     private Set<Contact> contacts;
 
@@ -73,5 +78,21 @@ public class User {
 
     public void setPersonalData_data(PersonalData personalData_data) {
         this.personalData_data = personalData_data;
+    }
+
+    public Address getAddress() {
+        return address;
+    }
+
+    public void setAddress(Address address) {
+        this.address = address;
+    }
+
+    public Set<Contact> getContacts() {
+        return contacts;
+    }
+
+    public void setContacts(Set<Contact> contacts) {
+        this.contacts = contacts;
     }
 }

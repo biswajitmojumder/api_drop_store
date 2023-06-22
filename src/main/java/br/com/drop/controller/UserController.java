@@ -59,7 +59,7 @@ public class UserController {
                     user.setId(update_user.getId());
                     userRepository.save(user);
                     return update_user;
-                }).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Update failed, user not found or does not exist "));
+    }).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Update failed, user not found or does not exist "));
 
     }
 

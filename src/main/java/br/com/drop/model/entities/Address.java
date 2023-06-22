@@ -36,6 +36,12 @@ public class Address {
     @Column(name = "address_nation")
     private String nation;
 
+    @OneToOne
+    @JoinColumn(name = "user_id")
+    private User user;
+
+
+
 
     public Integer getId() {
         return id;
