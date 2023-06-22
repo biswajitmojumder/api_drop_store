@@ -17,7 +17,6 @@ public class Contact {
 
     @ManyToOne
     @JoinColumn(name = "user_id")
-    @JsonIgnore
     private User user_id;
 
     @Column(name = "contact_type")

@@ -37,7 +37,8 @@ public class User {
     private Address address;
 
     @OneToMany(mappedBy = "user_id", fetch = FetchType.LAZY)
-    private Set<Contact> contacts;
+    @JsonIgnore
+    private List<Contact> contacts;
 
 
     public Integer getId() {
@@ -88,11 +89,11 @@ public class User {
         this.address = address;
     }
 
-    public Set<Contact> getContacts() {
+    public List<Contact> getContacts() {
         return contacts;
     }
 
-    public void setContacts(Set<Contact> contacts) {
+    public void setContacts(List<Contact> contacts) {
         this.contacts = contacts;
     }
 }
