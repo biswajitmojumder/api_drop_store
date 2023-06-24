@@ -37,6 +37,7 @@ public class Product {
     private List<Images> images;
 
     @OneToMany(mappedBy = "product", fetch = FetchType.LAZY)
+    @JsonIgnore
     private List<Rating> ratingList;
 
     public Integer getId() {

@@ -1,6 +1,6 @@
 package br.com.drop.model.entities;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
+
 
 import javax.persistence.*;
 import javax.validation.constraints.DecimalMax;
@@ -29,7 +29,7 @@ public class Rating {
     private LocalDate evaluation_date;
 
     @ManyToOne
-    @JsonIgnore
+    @JoinColumn(name = "product_id")
     private Product product;
 
     public Integer getId() {
@@ -62,5 +62,18 @@ public class Rating {
 
     public void setEvaluation_date(LocalDate evaluation_date) {
         this.evaluation_date = evaluation_date;
+    }
+
+    public Product getProduct() {
+        return product;
+    }
+
+    public void setProduct(Product product) {
+        this.product = product;
+    }
+
+    @PrePersist
+    public void prePersist() {
+        evaluation_date = LocalDate.now();
     }
 }
