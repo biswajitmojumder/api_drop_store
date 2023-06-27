@@ -5,12 +5,14 @@ import br.com.drop.model.entities.Contact;
 import br.com.drop.model.entities.User;
 import br.com.drop.repository.ContactRepository;
 import br.com.drop.repository.UserRepository;
+import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
 
+@RequiredArgsConstructor
 @RestController
 @RequestMapping("/api/user/contact")
 public class ContactController {
@@ -18,10 +20,6 @@ public class ContactController {
     ContactRepository contactRepository;
     UserRepository userRepository;
 
-    public ContactController(ContactRepository contactRepository, UserRepository userRepository) {
-        this.contactRepository = contactRepository;
-        this.userRepository = userRepository;
-    }
 
     @PostMapping("/insert")
     public Contact insert(@RequestBody Contact contact){

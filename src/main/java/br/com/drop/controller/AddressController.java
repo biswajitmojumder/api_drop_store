@@ -4,12 +4,14 @@ import br.com.drop.model.entities.Address;
 import br.com.drop.model.entities.User;
 import br.com.drop.repository.AddresRepository;
 import br.com.drop.repository.UserRepository;
+import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
 
+@RequiredArgsConstructor
 @RestController
 @RequestMapping("/api/user/address")
 public class AddressController {
@@ -17,10 +19,7 @@ public class AddressController {
     AddresRepository addresRepository;
     UserRepository userRepository;
 
-    public AddressController(AddresRepository addresRepository, UserRepository userRepository) {
-        this.addresRepository = addresRepository;
-        this.userRepository = userRepository;
-    }
+
 
     @PostMapping("/insert")
     @ResponseStatus(HttpStatus.CREATED)
