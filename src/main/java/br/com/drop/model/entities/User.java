@@ -2,11 +2,16 @@ package br.com.drop.model.entities;
 
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.util.List;
 import java.util.Set;
-
+@NoArgsConstructor
+@AllArgsConstructor
+@Data
 @Entity
 @Table(name = "user")
 public class User {
@@ -39,6 +44,10 @@ public class User {
     @OneToMany(mappedBy = "user_id", fetch = FetchType.LAZY)
     @JsonIgnore
     private List<Contact> contacts;
+
+    @OneToMany(mappedBy = "user", fetch = FetchType.LAZY)
+    @JsonIgnore
+    private  List<Order> orders;
 
 
     public Integer getId() {
