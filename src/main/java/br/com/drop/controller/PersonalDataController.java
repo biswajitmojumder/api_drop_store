@@ -5,13 +5,12 @@ import br.com.drop.model.entities.PersonalData;
 import br.com.drop.model.entities.User;
 import br.com.drop.repository.PersonalDateRepository;
 import br.com.drop.repository.UserRepository;
-import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 
 
-@RequiredArgsConstructor
+
 @RestController
 @RequestMapping("/api/personal/data")
 public class PersonalDataController {
@@ -19,7 +18,10 @@ public class PersonalDataController {
     PersonalDateRepository personalDataRepository;
     UserRepository userRepository;
 
-
+    public PersonalDataController(PersonalDateRepository personalDataRepository, UserRepository userRepository) {
+        this.personalDataRepository = personalDataRepository;
+        this.userRepository = userRepository;
+    }
 
     @PostMapping("/insert")
     @ResponseStatus(HttpStatus.CREATED)

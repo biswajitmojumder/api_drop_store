@@ -2,7 +2,6 @@ package br.com.drop.controller;
 
 import br.com.drop.model.entities.User;
 import br.com.drop.repository.UserRepository;
-import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Example;
 import org.springframework.data.domain.ExampleMatcher;
 import org.springframework.http.HttpStatus;
@@ -11,13 +10,15 @@ import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
 
-@RequiredArgsConstructor
 @RestController
 @RequestMapping("/api/user")
 public class UserController {
 
     UserRepository userRepository;
 
+    public UserController(UserRepository userRepository) {
+        this.userRepository = userRepository;
+    }
 
     @PostMapping("/insert")
     @ResponseStatus(HttpStatus.CREATED)
