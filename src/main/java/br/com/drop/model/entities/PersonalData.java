@@ -1,9 +1,6 @@
 package br.com.drop.model.entities;
 
 
-import ch.qos.logback.core.net.server.Client;
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
 import javax.persistence.*;
 
 @Entity
