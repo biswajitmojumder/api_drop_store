@@ -1,4 +1,4 @@
-package br.com.drop.service.impl.impl;
+package br.com.drop.service.impl;
 
 
 import br.com.drop.model.dto.ItemDTO;
@@ -12,7 +12,7 @@ import br.com.drop.repository.ItemsRepository;
 import br.com.drop.repository.OrderRepository;
 import br.com.drop.repository.ProductRepository;
 import br.com.drop.repository.UserRepository;
-import br.com.drop.service.impl.OrderService;
+import br.com.drop.service.OrderService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

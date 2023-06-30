@@ -1,4 +1,4 @@
-package br.com.drop.service.impl;
+package br.com.drop.service;
 
 import br.com.drop.model.dto.OrderDTO;
 import br.com.drop.model.entities.Order;

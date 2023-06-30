@@ -1,4 +1,4 @@
-package br.com.drop.service.impl.impl;
+package br.com.drop.service.impl;
 
 import br.com.drop.model.dto.UserDTO;
 import br.com.drop.model.entities.Address;
@@ -9,12 +9,12 @@ import br.com.drop.repository.AddresRepository;
 import br.com.drop.repository.ContactRepository;
 import br.com.drop.repository.PersonalDateRepository;
 import br.com.drop.repository.UserRepository;
-import br.com.drop.service.impl.UserService;
+import br.com.drop.service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.List;
+import java.util.Optional;
 
 
 @Service
@@ -42,6 +42,11 @@ public class UserServiceImpl implements UserService {
         return user;
     }
 
+    @Override
+    public Optional<Address> getFullAddress(Integer address_id) {
+        return addresRepository.findById(address_id);
+    }
+
     private Address saveAddress(User user_id){
         Address address = new Address();
         address.setCep("");
@@ -51,6 +56,7 @@ public class UserServiceImpl implements UserService {
         address.setNation("");
         address.setResidential_number("");
         address.setStreet("");
+        address.setState("");
         address.setUser(user_id);
         return address;
 

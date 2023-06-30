@@ -3,7 +3,7 @@ package br.com.drop.controller;
 
 import br.com.drop.model.dto.OrderDTO;
 import br.com.drop.model.entities.Order;
-import br.com.drop.service.impl.OrderService;
+import br.com.drop.service.OrderService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
