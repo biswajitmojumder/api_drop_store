@@ -1,7 +1,9 @@
 package br.com.drop.controller;
 
+import br.com.drop.model.dto.UserDTO;
 import br.com.drop.model.entities.User;
 import br.com.drop.repository.UserRepository;
+import br.com.drop.service.impl.UserService;
 import org.springframework.data.domain.Example;
 import org.springframework.data.domain.ExampleMatcher;
 import org.springframework.http.HttpStatus;
@@ -15,9 +17,17 @@ import java.util.List;
 public class UserController {
 
     UserRepository userRepository;
+    UserService userService;
 
-    public UserController(UserRepository userRepository) {
+    public UserController(UserRepository userRepository, UserService userService) {
         this.userRepository = userRepository;
+        this.userService = userService;
+    }
+
+    @PostMapping("/insertDTO")
+    public User save(@RequestBody UserDTO userDTO){
+        User user = userService.save(userDTO);
+        return user;
     }
 
     @PostMapping("/insert")

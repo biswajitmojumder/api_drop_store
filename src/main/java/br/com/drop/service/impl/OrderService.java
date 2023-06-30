@@ -5,6 +5,5 @@ import br.com.drop.model.entities.Order;
 
 public interface OrderService {
 
-
     Order save(OrderDTO dto);
 }
