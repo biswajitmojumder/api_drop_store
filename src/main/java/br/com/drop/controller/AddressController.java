@@ -3,6 +3,7 @@ package br.com.drop.controller;
 import br.com.drop.model.dto.AddressDTO;
 import br.com.drop.model.entities.Address;
 import br.com.drop.model.entities.User;
+import br.com.drop.model.exeption.BusinessRule;
 import br.com.drop.repository.AddresRepository;
 import br.com.drop.repository.UserRepository;
 import br.com.drop.service.UserService;
@@ -92,13 +93,13 @@ public class AddressController {
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public Address address (@PathVariable Integer user_id, @RequestBody Address address){
 
-        User user = userRepository.findById(user_id).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND,"user not found" ));
+        User user = userRepository.findById(user_id).orElseThrow(() -> new BusinessRule(HttpStatus.NOT_FOUND,"user not found" ));
 
         return addresRepository.findById(user.getPersonalData_data().getAddress().getId())
                 .map(update_address -> {
                     address.setId(update_address.getId());
                     addresRepository.save(address);
                     return update_address;
-                }).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Update failed, user not found or does not exist "));
+                }).orElseThrow(() -> new BusinessRule(HttpStatus.NOT_FOUND, "Update failed, user not found or does not exist "));
     }
 }
